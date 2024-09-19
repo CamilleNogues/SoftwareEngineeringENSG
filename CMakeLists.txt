@@ -9,10 +9,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 configure_file(cmake/HelloProjConfig.h.in HelloProjConfig.h)
 #add libraries
 add_subdirectory(src/basic)
-
 #add executable
 option(HELLOWORD_WITH_EXECUTABLES "Compile mains" ON)
 if(HELLOWORD_WITH_EXECUTABLES)
 	message(STATUS "Configuring Hello World with executables")
 	add_subdirectory(mains)
+endif()
+#add tests
+option(HELLOWORD_WITH_TESTS "Compile tests" ON)
+if(HELLOWORD_WITH_TESTS)
+	enable_testing()
+	message(STATUS "Configuring Hello World with tests")
+	add_subdirectory(tests)
 endif()
